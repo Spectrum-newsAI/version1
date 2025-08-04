@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - News & Debates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #f1c40f;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #2c3e50;
+            margin: 50px 0 30px 0;
+            font-weight: bold;
+        }
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #bdc3c7;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7f8c8d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: #2c3e50;
+            border-bottom-color: #f1c40f;
+        }
+
+        .tab:hover {
+            color: #2c3e50;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+
+        .news-grid, .debates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .news-item, .debate-item {
+            background-color: white;
+            border: 2px solid #bdc3c7;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #2c3e50;
+            display: block;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .news-item:hover, .debate-item:hover {
+            border-color: #f1c40f;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        .news-item h3, .debate-item h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .news-grid, .debates-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+                border-bottom: none;
+            }
+            
+            .tab {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+                border: 2px solid #bdc3c7;
+                margin: 5px;
+                border-radius: 6px;
+            }
+            
+            .tab.active {
+                border-color: #f1c40f;
+                background-color: #f1c40f;
+            }
+            .news-item, .debate-item {
+                padding: 30px;
+                min-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Spectrum</h1>
+            <p>disagree agreeably</p>
+        </header>
+
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="window.location.href='news.html'">News</button>
+                <button class="tab active" onclick="window.location.href='debates.html'">Debates</button>
+            </div>
+        </div>
+
+
+        <section>
+            <h2 class="section-title">Top News</h2>
+            <div class="news-grid">
+                <a href="https://www.bbc.co.uk/news/topics/c2y151e2r2yt" class="news-item">
+                    <h3>Trump's impeachment</h3>
+                </a>
+                <a href="https://www.independent.co.uk/news/world/europe/ukraine-russia-war-live-putin-trump-zelensky-peace-talks-drones-b2792633.html" class="news-item">
+                    <h3>Ukraine-Russia war</h3>
+                </a>
+                <a href="https://www.aljazeera.com/news/2025/7/20/will-israel-ever-get-blowback-for-bombing-its-neighbours" class="news-item">
+                    <h3>Israel vs Palestine</h3>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Top Debates</h2>
+            <div class="debates-grid">
+                <a href="specomment.html" class="debate-item">
+                    <h3>Trump</h3>
+                </a>
+                <a href="specomment1.html" class="debate-item">
+                    <h3>Russia vs Ukraine</h3>
+                </a>
+                <a href="specomment2.html" class="debate-item">
+                    <h3>Israel & Palestine</h3>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

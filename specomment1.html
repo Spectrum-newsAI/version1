@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukraine-Russia War Debate - Spectrum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #f1c40f;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .article-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .comments-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comments-header {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .comment {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .comment-text {
+            color: #34495e;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .reply-btn {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .reply-btn:hover {
+            text-decoration: underline;
+        }
+
+        .nested-comment {
+            margin-left: 40px;
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #f1c40f;
+        }
+
+        .mention {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .add-comment {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment-input {
+            padding: 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: #f1c40f;
+        }
+
+        .submit-btn {
+            align-self: flex-start;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #f39c12;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #3498db;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .article-content, .comments-section {
+                padding: 20px;
+            }
+            
+            .nested-comment {
+                margin-left: 20px;
+                padding-left: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Spectrum</h1>
+        <p>disagree agreeably</p>
+    </div>
+
+    <div class="container">
+        <a href="spec1.html" class="back-link">← Back to Home</a>
+        
+        <div class="article-content">
+            <h1 class="article-title">Ukraine-Russia War: International Response and Path Forward</h1>
+            <p class="article-text">
+                The ongoing conflict between Ukraine and Russia has raised fundamental questions about international law, 
+                sovereignty, and the role of global powers in regional conflicts. The international community faces 
+                difficult choices about military aid, economic sanctions, and diplomatic solutions.
+            </p>
+            <p class="article-text">
+                Central debates include: What level of support should democratic nations provide to Ukraine? How can the 
+                international community balance assistance with the risk of escalation? What are the most effective 
+                paths toward a sustainable resolution?
+            </p>
+        </div>
+
+        <div class="comments-section">
+            <h2 class="comments-header">Discussion</h2>
+            
+            <div class="comment">
+                <div class="comment-author">GlobalWatcher</div>
+                <div class="comment-text">Ukraine has the right to defend its sovereign territory. The international community must continue supporting democratic values and the rule of law.</div>
+                <div class="comment-actions">
+                    <a href="#" class="reply-btn">Reply</a>
+                </div>
+                
+                <div class="nested-comment">
+                    <div class="comment-author">PeaceFirst</div>
+                    <div class="comment-text"><span class="mention">@GlobalWatcher</span> I understand the principle, but we must also consider the humanitarian cost of prolonged conflict. Diplomatic solutions should be prioritized to save lives on both sides.</div>
+                    <div class="comment-actions">
+                        <a href="#" class="reply-btn">Reply</a>
+                    </div>
+                    
+                    <div class="nested-comment">
+                        <div class="comment-author">HistoricalPerspective</div>
+                        <div class="comment-text"><span class="mention">@PeaceFirst</span> History shows that appeasing aggressors often leads to greater conflicts later. Sometimes supporting resistance is the path to lasting peace.</div>
+                        <div class="comment-actions">
+                            <a href="#" class="reply-btn">Reply</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-author">EconomicAnalyst</div>
+                <div class="comment-text">The economic sanctions are affecting global supply chains and energy markets. We need to consider the broader impact on civilian populations worldwide, not just in the conflict zone.</div>
+                <div class="comment-actions">
+                    <a href="#" class="reply-btn">Reply</a>
+                </div>
+                
+                <div class="nested-comment">
+                    <div class="comment-author">EthicsFirst</div>
+                    <div class="comment-text"><span class="mention">@EconomicAnalyst</span> Economic disruption is unfortunate, but it pales in comparison to the human rights violations and loss of life. Some costs are worth bearing for moral principles.</div>
+                    <div class="comment-actions">
+                        <a href="#" class="reply-btn">Reply</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-author">DiplomaticSolution</div>
+                <div class="comment-text">Both sides need to make compromises for peace. International mediators should focus on creating face-saving exits for all parties rather than seeking total victory for either side.</div>
+                <div class="comment-actions">
+                    <a href="#" class="reply-btn">Reply</a>
+                </div>
+            </div>
+
+            <div class="add-comment">
+                <form class="comment-form">
+                    <textarea class="comment-input" placeholder="Share your perspective on this complex international situation... Remember to disagree agreeably!"></textarea>
+                    <button type="submit" class="submit-btn">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const replyBtns = document.querySelectorAll('.reply-btn');
+            replyBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const author = this.closest('.comment, .nested-comment').querySelector('.comment-author').textContent;
+                    const textarea = document.querySelector('.comment-input');
+                    textarea.value = `@${author} `;
+                    textarea.focus();
+                });
+            });
+
+            const form = document.querySelector('.comment-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const textarea = document.querySelector('.comment-input');
+                if (textarea.value.trim()) {
+                    alert('Comment posted! (This is just a demo)');
+                    textarea.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

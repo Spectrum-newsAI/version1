@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Debates - Spectrum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #f1c40f;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            font-weight: normal;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        .search-container {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .search-box {
+            width: 200px;
+            padding: 12px 20px;
+            border: 2px solid #2c3e50;
+            border-radius: 25px;
+            font-size: 1rem;
+            background-color: white;
+            outline: none;
+        }
+
+        .search-box::placeholder {
+            color: #7f8c8d;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            margin-right: 400px; /* Make space for sidebar */
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .debates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-story {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #bdc3c7;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar-story:hover {
+            border-color: #f1c40f;
+            transform: translateX(-5px);
+        }
+
+        .sidebar-story h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .sidebar-creator {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .article-count {
+            font-size: 1rem;
+            color: #7f8c8d;
+            text-align: right;
+        }
+
+        .main-debate {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #bdc3c7;
+        }
+
+        .main-debate:hover {
+            border-color: #f1c40f;
+            transform: translateY(-5px);
+        }
+
+        .debate-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .debate-content {
+            padding: 25px;
+        }
+
+        .debate-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .debate-creator {
+            font-size: 1rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .debate-count {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            text-align: right;
+        }
+
+        .create-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .create-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .create-button {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .create-button:hover {
+            background-color: #f39c12;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-indicators {
+            position: fixed;
+            right: 30px;
+            top: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .scroll-arrow {
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+
+        .scroll-up {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 20px solid #bdc3c7;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .scroll-up:hover {
+            border-bottom-color: #f1c40f;
+        }
+
+        .scroll-down {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #bdc3c7;
+            transition: border-top-color 0.3s ease;
+        }
+
+        .scroll-down:hover {
+            border-top-color: #f1c40f;
+        }
+
+        .scroll-bar {
+            width: 8px;
+            height: 60px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .scroll-thumb {
+            width: 100%;
+            height: 20px;
+            background-color: #bdc3c7;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .main-container {
+                margin-right: 0; /* Remove right margin on smaller screens */
+            }
+            
+            .sidebar {
+                position: static;
+                transform: none;
+                margin-top: 40px;
+                width: 100%;
+            }
+
+            .sidebar-story {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .scroll-indicators {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .search-container {
+                position: static;
+                transform: none;
+                margin: 10px 0;
+            }
+
+            .search-container {
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .debates-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .debate-title {
+                font-size: 1.4rem;
+            }
+
+            .create-title {
+                font-size: 1.6rem;
+            }
+
+            .main-container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search...">
+        </div>
+        <h1>spectrum</h1>
+        <p>the free marketplace of ideas</p>
+    </div>
+    <div class="main-container">
+        <h2 class="page-title">Trending Debates</h2>
+        
+        <div class="debates-grid">
+            <div class="main-debate" onclick="location.href='affairs.html'">
+                <img src="download (1).jpeg" alt="Personal Affairs" class="debate-image">
+                <div class="debate-content">
+                    <h3 class="debate-title">Should your personal affairs have professional repercussions?</h3>
+                    <div class="debate-creator">Created by Amazon</div>
+                    <div class="debate-count">23 articles</div>
+                </div>
+            </div>
+
+            <div class="main-debate" onclick="location.href='#vegan-lifestyle-debate'">
+                <img src="download (2).jpeg" alt="Vegan Food" class="debate-image">
+                <div class="debate-content">
+                    <h3 class="debate-title">Is a vegan lifestyle healthier?</h3>
+                    <div class="debate-creator">Created by User456</div>
+                    <div class="debate-count">14 articles</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="create-section">
+            <h3 class="create-title">Have something to discuss?</h3>
+            <a href="discussion.html" class="create-button">Create</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-story" onclick="location.href='#reform-election-debate'">
+            <h3>Can Reform win a general election?</h3>
+            <div class="sidebar-creator">Created by User789</div>
+            <div class="article-count">8 articles</div>
+        </div>
+
+        <div class="sidebar-story" onclick="location.href='#bitcoin-quantum-debate'">
+            <h3>Will Bitcoin still be safe with quantum computer developments?</h3>
+            <div class="sidebar-creator">Created by User012</div>
+            <div class="article-count">7 articles</div>
+        </div>
+
+        <div class="sidebar-story" onclick="location.href='#ananya-cto-debate'">
+            <h3>Is Ananya the best Chief Technical Officer in the world?</h3>
+            <div class="sidebar-creator">Created by not_ananya_parakh</div>
+            <div class="article-count">7 articles</div>
+        </div>
+    </div>
+
+    <div class="scroll-indicators">
+        <div class="scroll-arrow scroll-up" onclick="scrollSidebar(-1)"></div>
+        <div class="scroll-bar">
+            <div class="scroll-thumb"></div>
+        </div>
+        <div class="scroll-arrow scroll-down" onclick="scrollSidebar(1)"></div>
+    </div>
+
+    <script>
+        // Simple scroll functionality for sidebar
+        function scrollSidebar(direction) {
+            const sidebar = document.querySelector('.sidebar');
+            const scrollAmount = 200;
+            
+            if (direction === -1) {
+                sidebar.scrollTop -= scrollAmount;
+            } else {
+                sidebar.scrollTop += scrollAmount;
+            }
+        }
+
+        // Search functionality
+        document.querySelector('.search-box').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value;
+                alert(`Searching for: ${searchTerm}`);
+                // Here you would implement actual search functionality
+            }
+        });
+
+        // Update scroll thumb position based on sidebar scroll
+        const sidebar = document.querySelector('.sidebar');
+        const scrollThumb = document.querySelector('.scroll-thumb');
+
+        if (sidebar && scrollThumb) {
+            sidebar.addEventListener('scroll', function() {
+                const scrollPercent = this.scrollTop / (this.scrollHeight - this.clientHeight);
+                const thumbPosition = scrollPercent * 40; // 40px is scroll range
+                scrollThumb.style.top = thumbPosition + 'px';
+            });
+        }
+    </script>
+</body>
+</html>

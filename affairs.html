@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Should your personal affairs have professional repercussions? - Spectrum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #f1c40f;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            font-weight: normal;
+            margin-bottom: 10px;
+            text-transform: lowercase;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .content-area {
+            flex: 1;
+            margin-right: 350px; /* Make space for sidebar */
+        }
+
+        .discussion-title {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .discussion-intro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-name {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .comments-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .comment {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .comment:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .comment-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .comment-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .comment-text {
+            color: #34495e;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .comment-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment-votes {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vote-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .vote-btn:hover {
+            background-color: #ecf0f1;
+        }
+
+        .vote-count {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .reply-count {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .reply-count:hover {
+            color: #2c3e50;
+        }
+
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .sidebar-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            object-position: left;
+        }
+
+        .sidebar-cta {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #f39c12;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-indicators {
+            position: fixed;
+            right: 340px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .scroll-arrow {
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+
+        .scroll-up {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 20px solid #bdc3c7;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .scroll-up:hover {
+            border-bottom-color: #f1c40f;
+        }
+
+        .scroll-down {
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #bdc3c7;
+            transition: border-top-color 0.3s ease;
+        }
+
+        .scroll-down:hover {
+            border-top-color: #f1c40f;
+        }
+
+        .scroll-bar {
+            width: 8px;
+            height: 120px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .scroll-thumb {
+            width: 100%;
+            height: 30px;
+            background-color: #bdc3c7;
+            border-radius: 4px;
+            position: absolute;
+            top: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .content-area {
+                margin-right: 0;
+            }
+            
+            .sidebar {
+                position: static;
+                transform: none;
+                width: 100%;
+                margin-top: 40px;
+            }
+
+            .scroll-indicators {
+                display: none;
+            }
+
+            .main-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .discussion-title {
+                font-size: 1.8rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .main-container {
+                padding: 20px 15px;
+            }
+
+            .comment {
+                padding: 20px;
+            }
+
+            .comment-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>spectrum</h1>
+        <p>the free marketplace of ideas</p>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <h1 class="discussion-title">Discussion: Should your personal affairs have professional repercussions?</h1>
+            
+            <div class="discussion-intro">
+                <p class="intro-text">
+                    The recent scandal at a Coldplay concert raises broader questions around the distinction between 
+                    the professional and private life. I'm curious to see if people think the firing of this CEO was 
+                    justified, and the limits on how much a company can inspect its' employees' personal lives
+                </p>
+                <div class="author-info">
+                    <div class="author-avatar">U</div>
+                    <span class="author-name">by Amazon</span>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">
+                            <img src="p1.png" alt="Cloudy">
+                        </div>
+                        <div class="comment-author">Cloudy</div>
+                    </div>
+                    <h3 class="comment-title">Reputation is everything</h3>
+                    <p class="comment-text">
+                        Even if you only do work for your company from 9-5, you represent them 24/7. As such, 
+                        your personal life is your professional life, whether you like it or not. Whilst this...
+                    </p>
+                    <div class="comment-actions">
+                        <div class="comment-votes">
+                            <button class="vote-btn">
+                                <span>▼</span>
+                            </button>
+                            <button class="vote-btn">
+                                <span>💬</span>
+                            </button>
+                        </div>
+                        <div class="reply-count">19</div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">
+                            <img src="p2.png" alt="Banny">
+                        </div>
+                        <div class="comment-author">Banny</div>
+                    </div>
+                    <h3 class="comment-title">We all know too much about each other</h3>
+                    <p class="comment-text">
+                        The return of privacy cannot come soon enough. Of course, I disapprove of this man's 
+                        affair, like any other. But our employer's interest in us should not extend to behaviour...
+                    </p>
+                    <div class="comment-actions">
+                        <div class="comment-votes">
+                            <button class="vote-btn">
+                                <span>▼</span>
+                            </button>
+                            <button class="vote-btn">
+                                <span>💬</span>
+                            </button>
+                        </div>
+                        <div class="reply-count">13</div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">
+                            <img src="p3.png" alt="Amatriciana">
+                        </div>
+                        <div class="comment-author">Amatriciana</div>
+                    </div>
+                    <h3 class="comment-title">My experience: xxx</h3>
+                    <p class="comment-text">
+                        As someone who has been fired for things that happened outside of working hours, I...
+                    </p>
+                    <div class="comment-actions">
+                        <div class="comment-votes">
+                            <button class="vote-btn">
+                                <span>▼</span>
+                            </button>
+                            <button class="vote-btn">
+                                <span>💬</span>
+                            </button>
+                        </div>
+                        <div class="reply-count">8</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-image">
+                <img src="download (1).jpeg" alt="Discussion Image" class="sidebar-img">
+            </div>
+            
+            <div class="sidebar-cta">
+                <h3 class="cta-title">Want to share your opinion?</h3>
+                <button class="cta-button" onclick="addComment()">Comment</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicators">
+        <div class="scroll-arrow scroll-up" onclick="scrollPage(-300)"></div>
+        <div class="scroll-bar">
+            <div class="scroll-thumb"></div>
+        </div>
+        <div class="scroll-arrow scroll-down" onclick="scrollPage(300)"></div>
+    </div>
+
+    <script>
+        function scrollPage(amount) {
+            window.scrollBy({
+                top: amount,
+                behavior: 'smooth'
+            });
+        }
+
+        function addComment() {
+            alert('Comment functionality would open a comment form here');
+        }
+
+        // Update scroll thumb position
+        window.addEventListener('scroll', function() {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            const scrollThumb = document.querySelector('.scroll-thumb');
+            if (scrollThumb) {
+                const thumbPosition = scrollPercent * 90;
+                scrollThumb.style.top = thumbPosition + 'px';
+            }
+        });
+
+        // Vote button functionality
+        document.querySelectorAll('.vote-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // In a real app, this would handle voting
+                console.log('Vote button clicked');
+            });
+        });
+
+        // Reply count click functionality
+        document.querySelectorAll('.reply-count').forEach(count => {
+            count.addEventListener('click', function() {
+                alert('This would expand to show replies');
+            });
+        });
+    </script>
+</body>
+</html>
